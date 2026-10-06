@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MEDTRACK | Gestión de equipos médicos</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =========================
+         BARRA LATERAL
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <h1>MEDTRACK</h1>
+
+            <p class="subtitle">
+                Gestión de equipos médicos
+            </p>
+        </div>
+
+        <nav class="main-nav">
+
+            <button
+                type="button"
+                onclick="mostrarPagina('inicio')">
+                🏠 <span>Inicio</span>
+            </button>
+
+            <button
+                type="button"
+                onclick="mostrarPagina('inventario')">
+                📦 <span>Inventario</span>
+            </button>
+
+            <button
+                type="button"
+                onclick="mostrarPagina('mantenimiento')">
+                🔧 <span>Mantenimiento</span>
+            </button>
+
+            <button
+                type="button"
+                onclick="mostrarPagina('incidencias')">
+                ⚠️ <span>Incidencias</span>
+            </button>
+
+            <button
+                type="button"
+                onclick="mostrarPagina('calendario')">
+                📅 <span>Calendario</span>
+            </button>
+
+            <button
+                type="button"
+                onclick="mostrarPagina('estadisticas')">
+                📊 <span>Estadísticas</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>MEDTRACK</span>
+            <small>Sistema de gestión</small>
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+
+    <main class="main">
+
+
+        <!-- =========================
+             INICIO / DASHBOARD
+        ========================== -->
+
+        <section id="inicio" class="page active">
+
+            <header class="main-header">
+
+                <div>
+                    <span class="eyebrow">
+                        PANEL DE CONTROL
+                    </span>
+
+                    <h2>
+                        Panel principal
+                    </h2>
+
+                    <p>
+                        Resumen general del inventario de equipos médicos.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    onclick="mostrarFormularioEquipo()">
+                    + Añadir equipo
+                </button>
+
+            </header>
+
+
+            <!-- Tarjetas principales -->
+
+            <section class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        📦
+                    </div>
+
+                    <div>
+                        <span>Total de equipos</span>
+
+                        <strong id="totalEquipos">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>Operativos</span>
+
+                        <strong id="equiposOperativos">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🔧
+                    </div>
+
+                    <div>
+                        <span>En mantenimiento</span>
+
+                        <strong id="equiposMantenimiento">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        ⚠️
+                    </div>
+
+                    <div>
+                        <span>Averiados</span>
+
+                        <strong id="equiposAveriados">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Resumen -->
+
+            <section class="dashboard-grid">
+
+                <div class="welcome">
+
+                    <span class="eyebrow">
+                        MEDTRACK
+                    </span>
+
+                    <h2>
+                        Gestión inteligente del equipamiento
+                    </h2>
+
+                    <p>
+                        MEDTRACK permite centralizar el inventario,
+                        mantenimiento, incidencias y seguimiento
+                        de los equipos médicos desde una única plataforma.
+                    </p>
+
+                    <div class="welcome-actions">
+
+                        <button
+                            type="button"
+                            class="primary-btn"
+                            onclick="mostrarPagina('inventario')">
+                            Ver inventario
+                        </button>
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            onclick="mostrarPagina('mantenimiento')">
+                            Ver mantenimiento
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-panel">
+
+                    <h3>
+                        Acciones rápidas
+                    </h3>
+
+                    <button
+                        type="button"
+                        class="quick-action"
+                        onclick="mostrarFormularioEquipo()">
+
+                        <span>➕</span>
+
+                        <div>
+                            <strong>Añadir equipo</strong>
+                            <small>Registrar un nuevo dispositivo</small>
+                        </div>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="quick-action"
+                        onclick="mostrarPagina('inventario')">
+
+                        <span>🔎</span>
+
+                        <div>
+                            <strong>Consultar inventario</strong>
+                            <small>Buscar equipos registrados</small>
+                        </div>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="quick-action"
+                        onclick="mostrarPagina('incidencias')">
+
+                        <span>⚠️</span>
+
+                        <div>
+                            <strong>Incidencias</strong>
+                            <small>Consultar incidencias registradas</small>
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Próximos mantenimientos -->
+
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">
+                            MANTENIMIENTO
+                        </span>
+
+                        <h2>
+                            Próximos mantenimientos
+                        </h2>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="small-btn"
+                        onclick="mostrarPagina('mantenimiento')">
+                        Ver todos
+                    </button>
+
+                </div>
+
+                <div id="proximosMantenimientos">
+                    <p class="empty-state">
+                        No hay mantenimientos próximos.
+                    </p>
+                </div>
+
+            </section>
+
+        </section>
+
+
+
+        <!-- =========================
+             INVENTARIO
+        ========================== -->
+
+        <section id="inventario" class="page">
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        EQUIPAMIENTO
+                    </span>
+
+                    <h2>
+                        Inventario de equipos
+                    </h2>
+
+                    <p>
+                        Gestión y consulta de dispositivos médicos registrados.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    onclick="mostrarFormularioEquipo()">
+                    + Añadir equipo
+                </button>
+
+            </div>
+
+
+            <!-- Buscador y filtros -->
+
+            <div class="toolbar">
+
+                <input
+                    type="text"
+                    id="buscador"
+                    placeholder="🔎 Buscar por equipo, ID, fabricante o modelo..."
+                    oninput="mostrarInventario()"
+                    autocomplete="off"
+                >
+
+
+                <select
+                    id="filtroEstado"
+                    onchange="mostrarInventario()">
+
+                    <option value="">
+                        Todos los estados
+                    </option>
+
+                    <option value="Operativo">
+                        Operativo
+                    </option>
+
+                    <option value="Mantenimiento">
+                        Mantenimiento
+                    </option>
+
+                    <option value="Averiado">
+                        Averiado
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="filtroCategoria"
+                    onchange="mostrarInventario()">
+
+                    <option value="">
+                        Todas las categorías
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Tabla -->
+
+            <div id="tablaInventario">
+
+                <div class="empty-state">
+                    Cargando inventario...
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FORMULARIO NUEVO EQUIPO
+        ========================== -->
+
+        <section id="formularioEquipo" class="page">
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        INVENTARIO
+                    </span>
+
+                    <h2>
+                        Nuevo equipo
+                    </h2>
+
+                    <p>
+                        Registrar un nuevo equipo médico.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <div class="form-section-title">
+
+                    <h3>
+                        Información del equipo
+                    </h3>
+
+                    <p>
+                        Introduce los datos principales del dispositivo.
+                    </p>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-field">
+
+                        <label for="nombreEquipo">
+                            Nombre del equipo *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombreEquipo"
+                            placeholder="Ej. Desfibrilador"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="fabricanteEquipo">
+                            Fabricante *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fabricanteEquipo"
+                            placeholder="Ej. Philips"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="modeloEquipo">
+                            Modelo *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="modeloEquipo"
+                            placeholder="Ej. HeartStart"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="serieEquipo">
+                            Número de serie *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="serieEquipo"
+                            placeholder="Ej. SN123456"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="categoriaEquipo">
+                            Categoría *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="categoriaEquipo"
+                            placeholder="Ej. Cardiología"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="departamentoEquipo">
+                            Departamento *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="departamentoEquipo"
+                            placeholder="Ej. Urgencias"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="ubicacionEquipo">
+                            Ubicación *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="ubicacionEquipo"
+                            placeholder="Ej. Sala 2"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="adquisicionEquipo">
+                            Fecha de adquisición
+                        </label>
+
+                        <input
+                            type="date"
+                            id="adquisicionEquipo"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-field full-width">
+
+                    <label for="descripcionEquipo">
+                        Descripción
+                    </label>
+
+                    <textarea
+                        id="descripcionEquipo"
+                        placeholder="Describe brevemente el equipo y su función..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        onclick="mostrarPagina('inventario')">
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="button"
+                        class="primary-btn"
+                        onclick="guardarNuevoEquipo()">
+                        Guardar equipo
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             DETALLE DEL EQUIPO
+        ========================== -->
+
+        <section id="detalleEquipo" class="page">
+
+            <div id="contenidoEquipo">
+
+                <div class="empty-state">
+                    Selecciona un equipo para consultar su información.
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             MANTENIMIENTO
+        ========================== -->
+
+        <section id="mantenimiento" class="page">
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MANTENIMIENTO
+                    </span>
+
+                    <h2>
+                        Gestión de mantenimiento
+                    </h2>
+
+                    <p>
+                        Seguimiento de revisiones y mantenimiento de los equipos.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="listaMantenimientos">
+
+                <div class="empty-state">
+                    No hay mantenimientos registrados.
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             INCIDENCIAS
+        ========================== -->
+
+        <section id="incidencias" class="page">
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        INCIDENCIAS
+                    </span>
+
+                    <h2>
+                        Incidencias de equipos
+                    </h2>
+
+                    <p>
+                        Registro y seguimiento de incidencias detectadas.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="listaIncidencias">
+
+                <div class="empty-state">
+                    No hay incidencias registradas.
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CALENDARIO
+        ========================== -->
+
+        <section id="calendario" class="page">
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        PLANIFICACIÓN
+                    </span>
+
+                    <h2>
+                        Calendario
+                    </h2>
+
+                    <p>
+                        Próximas revisiones y actividades de mantenimiento.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="calendar-card">
+
+                <div class="calendar-header">
+
+                    <button
+                        type="button"
+                        class="small-btn"
+                        onclick="cambiarMes(-1)">
+                        ←
+                    </button>
+
+                    <h3 id="mesCalendario">
+                        Calendario
+                    </h3>
+
+                    <button
+                        type="button"
+                        class="small-btn"
+                        onclick="cambiarMes(1)">
+                        →
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="calendarioContenido"
+                    class="calendar-grid">
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ESTADÍSTICAS
+        ========================== -->
+
+        <section id="estadisticas" class="page">
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        ANÁLISIS
+                    </span>
+
+                    <h2>
+                        Estadísticas
+                    </h2>
+
+                    <p>
+                        Resumen del estado y distribución del equipamiento.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-panel">
+
+                    <h3>
+                        Estado de los equipos
+                    </h3>
+
+                    <div
+                        id="estadisticasEstado"
+                        class="stats-list">
+                    </div>
+
+                </div>
+
+
+                <div class="stat-panel">
+
+                    <h3>
+                        Equipos por categoría
+                    </h3>
+
+                    <div
+                        id="estadisticasCategoria"
+                        class="stats-list">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PÁGINA QR
+        ========================== -->
+
+        <section id="qr" class="page">
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        IDENTIFICACIÓN
+                    </span>
+
+                    <h2>
+                        Código QR
+                    </h2>
+
+                    <p>
+                        Código de acceso rápido a la ficha del equipo.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="qr-card">
+
+                <div id="qrcode"></div>
+
+                <p id="qrEquipo">
+                    Selecciona un equipo para generar su código QR.
+                </p>
+
+                <div class="qr-actions">
+
+                    <button
+                        type="button"
+                        class="primary-btn"
+                        onclick="window.print()">
+                        🖨️ Imprimir QR
+                    </button>
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        onclick="mostrarPagina('inventario')">
+                        ← Volver al inventario
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================
+     LIBRERÍA PARA QR
+========================== -->
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+</script>
+
+
+<!-- =========================
+     JAVASCRIPT DE MEDTRACK
+========================== -->
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
